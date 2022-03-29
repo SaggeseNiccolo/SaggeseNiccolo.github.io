@@ -53,7 +53,7 @@ $("#cripta").click(function () {
     }
 
     for (var i = 0; i < nk; i++) {
-        if (k[i] > 25 || k[i] < 1) { return null }
+        if (k[i] > 25 || k[i] < 1 || k[i] == null) { return null }
     }
 
     $("#parola-criptata").html(parola_criptata);
