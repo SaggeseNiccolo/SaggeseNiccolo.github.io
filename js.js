@@ -51,5 +51,9 @@ $("#cripta").click(function () {
         parola_criptata.toString();
     }
 
+    for (var i = 0; i < nk; i++) {
+        if (k[i] > 25 || k[i] < 1) { return null }
+    }
+
     $("#parola-criptata").html(parola_criptata);
 });

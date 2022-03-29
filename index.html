@@ -10,16 +10,16 @@
 </head>
 
 <body>
-    <div class="container mt-3">
+    <div class="container w-50 mt-3">
         <form>
             Parola:
-            <input type="text" name="parola" id="parola" class="form-control" required><br><br>
+            <input type="text" name="parola" id="parola" class="form-control" required><br>
             <div id="chiavi">
                 Chiave:
-                <input type="number" name="k1" id="k1" class="form-control" min="1" max="25" required><br><br>
+                <input type="number" name="k1" id="k1" class="form-control" min="1" max="25" required><br>
             </div>
-            <div class="btn btn-success rounded-circle float-end" id="aggiungi">+</div>
-            <button class="btn btn-primary" id="cripta">Cripta</button><br><br>
+            <div class="btn btn-success btn-lg rounded-circle float-end" id="aggiungi">+</div>
+            <button class="btn btn-primary btn-lg" id="cripta">Cripta</button><br>
         </form>
         <h1 id="parola-criptata"></h1>
     </div>
