@@ -21,6 +21,7 @@ $("#cripta").click(function () {
 
     // prendo la parola e la trasformo in un array
     parola = $("#parola").val();
+    parola = parola.toLowerCase();
     parola = parola.split("");
 
     // var ar1 = alfabeto.slice(0, k1);
