@@ -11,16 +11,17 @@
 
 <body>
     <div class="container mt-3">
-        Parola:
-        <input type="text" name="parola" id="parola" class="form-control"><br><br>
-        Chiave:
-        <input type="number" name="k1" id="k1" class="form-control" min="1" max="25"><br><br>
-        Chiave:
-        <input type="number" name="k2" id="k2" class="form-control" min="1" max="25"><br><br>
-        Chiave:
-        <input type="number" name="k3" id="k3" class="form-control" min="1" max="25"><br><br>
-        <button class="btn btn-primary" id="btn">Cripta</button><br><br>
-        <h1 id="titolo"></h1>
+        <form>
+            Parola:
+            <input type="text" name="parola" id="parola" class="form-control" required><br><br>
+            <div id="chiavi">
+                Chiave:
+                <input type="number" name="k1" id="k1" class="form-control" min="1" max="25" required><br><br>
+            </div>
+            <div class="btn btn-success rounded-circle float-end" id="aggiungi">+</div>
+            <button class="btn btn-primary" id="cripta">Cripta</button><br><br>
+        </form>
+        <h1 id="parola-criptata"></h1>
     </div>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
