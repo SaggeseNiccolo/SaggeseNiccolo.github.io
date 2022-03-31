@@ -1,6 +1,7 @@
 var alfabeto = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
 var alfabeto_criptato;
 var parola = "";
+var p = "";
 var nk = 1;
 var k = [];
 
@@ -14,6 +15,8 @@ $("#aggiungi").click(function () {
 });
 
 $("#cripta").click(function () {
+    var spazi = [];
+
     // prendo il valore delle chiavi e le converto in numeri
     for (var i = 0; i < nk; i++) {
         k[i] = Number($("#k" + (i + 1) + "").val());
@@ -21,6 +24,7 @@ $("#cripta").click(function () {
 
     // prendo la parola e la trasformo in un array
     parola = $("#parola").val();
+    p = parola;
     parola = parola.toLowerCase();
     parola = parola.split("");
 
@@ -33,9 +37,10 @@ $("#cripta").click(function () {
 
     for (var j = 0; j < parola.length; j++) {
         if (parola[j] == " ") {
-            var spazio = j;
-            j--;
-            parola.splice(spazio, 1);
+            spazi.push(j + spazi.length);
+            parola.splice(j--, 1);
+            console.log(parola);
+            console.log(spazi);
         } else {
             for (var i = 0; i < alfabeto.length; i++) {
                 if (parola[j] == alfabeto[i]) {
@@ -46,15 +51,76 @@ $("#cripta").click(function () {
         }
     }
 
-    if (spazio != null) {
+    if (spazi.length > 0) {
         parola_criptata = parola_criptata.split("");
-        parola_criptata.splice(spazio, 0, " ");
-        parola_criptata.toString();
+        for (var i = 0; i < spazi.length; i++) {
+            parola_criptata.splice(spazi[i], 0, " ");
+        }
+        parola_criptata = parola_criptata.join("");
     }
 
     for (var i = 0; i < nk; i++) {
-        if (k[i] > 25 || k[i] < 1 || k[i] == null) { return null }
+        if (k[i] > 25 || k[i] < 1 || k[i] == null) { var stacca = true }
     }
 
-    $("#parola-criptata").html(parola_criptata);
+    parola = parola.join("");
+
+    if (stacca != true) {
+        $("#parola-criptata").html(p + " > " + parola_criptata);
+    }
+});
+
+$("#decripta").click(function () {
+    var spazi = [];
+
+    // prendo il valore delle chiavi e le converto in numeri
+    for (var i = 0; i < nk; i++) {
+        k[i] = Number($("#k" + (i + 1) + "").val());
+    }
+
+    // prendo la parola e la trasformo in un array
+    parola = $("#parola").val();
+    p = parola;
+    parola = parola.toLowerCase();
+    parola = parola.split("");
+
+    var parola_decriptata = "";
+
+    for (var j = 0; j < parola.length; j++) {
+        if (parola[j] == " ") {
+            spazi.push(j + spazi.length);
+            parola.splice(j--, 1);
+            console.log(parola);
+            console.log(spazi);
+        } else {
+            for (var i = 0; i < alfabeto.length; i++) {
+                if (parola[j] == alfabeto[i]) {
+                    if (i >= k[j % nk]) {
+                        parola_decriptata += alfabeto[i - k[j % nk]];
+                    } else {
+                        parola_decriptata += alfabeto[(i + 26) - k[j % nk]];
+                    }
+                    break;
+                }
+            }
+        }
+    }
+
+    if (spazi.length > 0) {
+        parola_decriptata = parola_decriptata.split("");
+        for (var i = 0; i < spazi.length; i++) {
+            parola_decriptata.splice(spazi[i], 0, " ");
+        }
+        parola_decriptata = parola_decriptata.join("");
+    }
+
+    for (var i = 0; i < nk; i++) {
+        if (k[i] > 25 || k[i] < 1 || k[i] == null) { var stacca = true }
+    }
+
+    parola = parola.join("");
+
+    if (stacca != true) {
+        $("#parola-criptata").html(p + " > " + parola_decriptata);
+    }
 });
