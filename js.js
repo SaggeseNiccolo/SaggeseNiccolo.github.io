@@ -1,6 +1,7 @@
 var alfabeto = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
 var alfabeto_criptato;
 var parola = "";
+var sequenza = "";
 var p = "";
 var nk = 1;
 var k = [];
@@ -12,6 +13,7 @@ $("form").submit(function (e) {
 $("#aggiungi").click(function () {
     nk++;
     $("#chiavi").append('Chiave: <input type="number" name="k' + nk + '" id="k' + nk + '" class="form-control min="1" max="25" required><br>')
+    $("#seq").removeClass("d-none");
 });
 
 $("#cripta").click(function () {
@@ -20,6 +22,13 @@ $("#cripta").click(function () {
     // prendo il valore delle chiavi e le converto in numeri
     for (var i = 0; i < nk; i++) {
         k[i] = Number($("#k" + (i + 1) + "").val());
+    }
+
+    //prendo la sequenza e la trasformo in un array
+    if (nk > 1) {
+        sequenza = $("#sequenza").val();
+        sequenza = sequenza.split("");
+        console.log(sequenza);
     }
 
     // prendo la parola e la trasformo in un array
@@ -44,7 +53,11 @@ $("#cripta").click(function () {
         } else {
             for (var i = 0; i < alfabeto.length; i++) {
                 if (parola[j] == alfabeto[i]) {
-                    parola_criptata += alfabeto[(i + k[j % nk]) % 26];
+                    if (nk > 1) {
+                        parola_criptata += alfabeto[(i + k[sequenza[j % sequenza.length] - 1]) % 26];
+                    } else {
+                        parola_criptata += alfabeto[(i + k[j % nk]) % 26];
+                    }
                     break;
                 }
             }
@@ -76,6 +89,13 @@ $("#decripta").click(function () {
     // prendo il valore delle chiavi e le converto in numeri
     for (var i = 0; i < nk; i++) {
         k[i] = Number($("#k" + (i + 1) + "").val());
+    }
+
+    //prendo la sequenza e la trasformo in un array
+    if (nk > 1) {
+        sequenza = $("#sequenza").val();
+        sequenza = sequenza.split("");
+        console.log(sequenza);
     }
 
     // prendo la parola e la trasformo in un array
