@@ -28,7 +28,6 @@ $("#cripta").click(function () {
     if (nk > 1) {
         sequenza = $("#sequenza").val();
         sequenza = sequenza.split("");
-        console.log(sequenza);
     }
 
     // prendo la parola e la trasformo in un array
@@ -48,8 +47,6 @@ $("#cripta").click(function () {
         if (parola[j] == " ") {
             spazi.push(j + spazi.length);
             parola.splice(j--, 1);
-            console.log(parola);
-            console.log(spazi);
         } else {
             for (var i = 0; i < alfabeto.length; i++) {
                 if (parola[j] == alfabeto[i]) {
@@ -73,13 +70,15 @@ $("#cripta").click(function () {
     }
 
     for (var i = 0; i < nk; i++) {
-        if (k[i] > 25 || k[i] < 1 || k[i] == null) { var stacca = true }
+        if (k[i] > 25 || k[i] < 1 || k[i] == null) {
+            var stacca = true
+        }
     }
 
     parola = parola.join("");
 
     if (stacca != true) {
-        $("#parola-criptata").html(p + " > " + parola_criptata);
+        $("#parola-criptata").html(p + " -> " + parola_criptata);
     }
 });
 
@@ -95,7 +94,6 @@ $("#decripta").click(function () {
     if (nk > 1) {
         sequenza = $("#sequenza").val();
         sequenza = sequenza.split("");
-        console.log(sequenza);
     }
 
     // prendo la parola e la trasformo in un array
@@ -110,15 +108,21 @@ $("#decripta").click(function () {
         if (parola[j] == " ") {
             spazi.push(j + spazi.length);
             parola.splice(j--, 1);
-            console.log(parola);
-            console.log(spazi);
         } else {
             for (var i = 0; i < alfabeto.length; i++) {
                 if (parola[j] == alfabeto[i]) {
-                    if (i >= k[j % nk]) {
-                        parola_decriptata += alfabeto[i - k[j % nk]];
+                    if (nk > 1) {
+                        if (i >= k[sequenza[j % sequenza.length] - 1]) {
+                            parola_decriptata += alfabeto[i - k[sequenza[j % sequenza.length] - 1]];
+                        } else {
+                            parola_decriptata += alfabeto[(i + 26) - k[sequenza[j % sequenza.length] - 1]];
+                        }
                     } else {
-                        parola_decriptata += alfabeto[(i + 26) - k[j % nk]];
+                        if (i >= k[j % nk]) {
+                            parola_decriptata += alfabeto[i - k[j % nk]];
+                        } else {
+                            parola_decriptata += alfabeto[(i + 26) - k[j % nk]];
+                        }
                     }
                     break;
                 }
