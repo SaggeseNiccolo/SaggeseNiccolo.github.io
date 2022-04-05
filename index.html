@@ -11,20 +11,21 @@
     <link rel="icon" href="favicon.ico" type="image/x-icon">
 </head>
 
-<body>
+<body style="display: none;">
     <div class="container w-auto mt-3">
         <form>
-            Frase
+            <h5>Frase</h5>
             <input type="text" name="parola" id="parola" class="form-control" required><br>
             <div id="chiavi">
-                Chiave #1
+                <h5>Chiave #1</h5>
                 <input type="number" name="k1" id="k1" class="form-control" min="1" max="25" required><br>
             </div>
-            <div id="seq" class="d-none">
-                Sequenza
+            <div id="seq" style="display: none;">
+                <h5>Sequenza</h5>
                 <input type="text" name="sequenza" id="sequenza" class="form-control" placeholder="es. 123"><br>
             </div>
-            <div class="btn btn-success btn-lg rounded-circle float-end" id="aggiungi">+</div>
+            <img src="https://img.icons8.com/fluency/48/000000/add-key.png" class="float-end" style="cursor: pointer;"
+                id="aggiungi" />
             <button class="btn btn-primary btn-lg" id="cripta">Cripta</button>
             <button class="btn btn-danger btn-lg ms-3" id="decripta">Decripta</button><br>
         </form><br>

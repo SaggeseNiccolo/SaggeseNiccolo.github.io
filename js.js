@@ -6,14 +6,23 @@ var p = "";
 var nk = 1;
 var k = [];
 
+$(document).ready(function () {
+    $("body").fadeIn();
+});
+
 $("form").submit(function (e) {
     e.preventDefault();
 });
 
 $("#aggiungi").click(function () {
-    nk++;
-    $("#chiavi").append('Chiave #' + nk + ' <input type="number" name="k' + nk + '" id="k' + nk + '" class="form-control min="1" max="25" required><br>')
-    $("#seq").removeClass("d-none");
+    if (nk < 9) {
+        nk++;
+        $("#chiavi").append('<h5>Chiave #' + nk + '</h5> <input type="number" name="k' + nk + '" id="k' + nk + '" class="form-control" style="display: none;" min="1" max="25"><br>');
+        $("#k" + nk).fadeIn("fast");
+    } else {
+        $("#aggiungi").fadeOut();
+    }
+    $("#seq").fadeIn("fast");
 });
 
 $("#cripta").click(function () {
