@@ -7,7 +7,7 @@ var nk = 1;
 var k = [];
 
 $(document).ready(function () {
-    $("body").fadeIn();
+    $("body").fadeIn("fast");
 });
 
 $("form").submit(function (e) {
@@ -86,7 +86,8 @@ $("#cripta").click(function () {
     parola = parola.join("");
 
     if (stacca != true) {
-        $("#parola-criptata").html(p + " -> " + parola_criptata);
+        $("#parola-criptata").html(parola_criptata);
+        $("#parola-criptata").fadeIn("fast");
     }
 });
 
@@ -153,6 +154,7 @@ $("#decripta").click(function () {
     parola = parola.join("");
 
     if (stacca != true) {
-        $("#parola-criptata").html(p + " > " + parola_decriptata);
+        $("#parola-criptata").html(parola_decriptata);
+        $("#parola-criptata").fadeIn("fast");
     }
 });
