@@ -12,7 +12,7 @@ $("form").submit(function (e) {
 
 $("#aggiungi").click(function () {
     nk++;
-    $("#chiavi").append('Chiave: <input type="number" name="k' + nk + '" id="k' + nk + '" class="form-control min="1" max="25" required><br>')
+    $("#chiavi").append('Chiave #' + nk + ' <input type="number" name="k' + nk + '" id="k' + nk + '" class="form-control min="1" max="25" required><br>')
     $("#seq").removeClass("d-none");
 });
 
