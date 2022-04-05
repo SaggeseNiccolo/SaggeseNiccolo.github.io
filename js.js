@@ -15,11 +15,10 @@ $("form").submit(function (e) {
 });
 
 $("#aggiungi").click(function () {
-    if (nk < 9) {
-        nk++;
-        $("#chiavi").append('<h5>Chiave #' + nk + '</h5> <input type="number" name="k' + nk + '" id="k' + nk + '" class="form-control" style="display: none;" min="1" max="25"><br>');
-        $("#k" + nk).fadeIn("fast");
-    } else {
+    nk++;
+    $("#chiavi").append('<h5>Chiave #' + nk + '</h5> <input type="number" name="k' + nk + '" id="k' + nk + '" class="form-control" style="display: none;" min="1" max="25"><br>');
+    $("#k" + nk).fadeIn("fast");
+    if (nk == 9) {
         $("#aggiungi").fadeOut();
     }
     $("#seq").fadeIn("fast");
